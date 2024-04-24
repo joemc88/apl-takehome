@@ -37,10 +37,12 @@ export default function Products(){
 
     useEffect(() => {
     	updateProductList();
+    	// eslint-disable-next-line
   	},[]);
 
   	useEffect(() => {
     	updateProductList();
+    	// eslint-disable-next-line
   	}, [searchKeyword]);
 
  	return (
