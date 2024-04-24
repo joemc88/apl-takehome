@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/app
+      - ./data/db:/app/db  # Mount a volume for the SQLite database
+    ports:
+      - "8000:8000"
+    environment:
+      - DEBUG=1  # Optionally set environment variables

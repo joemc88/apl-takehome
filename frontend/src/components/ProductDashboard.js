@@ -1,20 +1,19 @@
-import React, { useState, useEffect } from 'react';
-
-import Link from '@mui/material/Link';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Title from './Title';
+import {React, useState,useContext } from 'react';
 import Grid from '@mui/material/Grid';
 import Products from './Products';
+import AuthContext from '../AuthContext';
+import Login from './Login';
 
 export default function ProductDashboard(){
+    const { sessionToken } = useContext(AuthContext);
+    if (sessionToken !== undefined && sessionToken !== null && sessionToken[0]!== undefined){
+        return (
+ 	      <Grid container spacing={1}>
 
- return (
- 	<Grid container spacing={1}>
-		<Products/>
-    </Grid>
-   );
+		      <Products sessionToken={sessionToken}/>
+            </Grid>
+        );
+    }else{
+        return (<Login/>);
+    }
 }

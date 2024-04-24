@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework.authtoken',
     'corsheaders',
-    'products'
+    'products',
+
 ]
 
 MIDDLEWARE = [
@@ -53,7 +54,16 @@ MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
 ]
 
-CORS_ALLOWED_ORIGINS = [
+CSRF_TRUSTED_ORIGINS = ['http://localhost:8000','http://localhost:3000']
+CSRF_COOKIE_HTTPONLY = False
+
+ALLOWED_HOSTS = [
+    'localhost',
+]
+CORS_ALLOW_CREDENTIALS = True
+
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:8000',
     'http://localhost:3000'
 ]
 
@@ -122,6 +132,11 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+AUTHENTICATION_BACKENDS = (
+        'django.contrib.auth.backends.ModelBackend',
+        #'django.contrib.auth.backends.RemoteUserBackend',
+    )
 
 
 # Internationalization
