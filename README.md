@@ -13,7 +13,7 @@ You should also create a superuser in order to login using :`python manage.py cr
 
 
 I didn't get to deploying it on k8s so deployment is a bit more manual. 
-There's a dockerfile and a docker-compose in each directory (frontend and back_end). To start the app open a terminal window in both directories and run:
+There's a dockerfile and a docker-compose in each directory (front_end and back_end). To start the app open a terminal window in both directories and run:
 `docker-compose up --build`
 
 After that you should be good to go. The app will be available on http://localhost:3000.
