@@ -7,7 +7,8 @@ application should have a basic user interface where users can add, delete, and 
 
 This application is designed to work as a pair of docker containers. One for the **Django** backend and SQLite DB and one for the **React** front end.
 
-Because the backend includes the DB it will be necessary to initialise that with `python manage.py migrate`. 
+Because the backend includes the DB, so it will be necessary to initialise that with `python manage.py migrate`. 
+
 You should also create a superuser in order to login using :`python manage.py createsuperuser`
 
 
