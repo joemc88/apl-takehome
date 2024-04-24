@@ -28,7 +28,6 @@ class GetUpdateDeleteProduct(generics.RetrieveUpdateDestroyAPIView):
 @permission_classes([IsAuthenticated])
 def searchProducts(request):
     request_json = json.loads(request.body)
-    print(request_json)
     keyword = request_json['keyword']
     if keyword != "":
         try:

@@ -7,7 +7,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 
 import Grid from '@mui/material/Grid';
-import { TextField, Button, Container } from '@mui/material';
+import { TextField } from '@mui/material';
 import Paper from '@mui/material/Paper';
 import AuthContext from '../AuthContext';
 import ProductRow from './ProductRow';

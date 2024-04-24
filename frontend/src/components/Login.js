@@ -27,8 +27,11 @@ function Login({sessionToken, setSessionToken}) {
     	}
 	})
 	.then(data => {
-    	const sessionToken = data.token;
-    	login(sessionToken);
+      if (data != null){
+        const sessionToken = data.token;
+      login(sessionToken);
+      }
+    	
   	});}
 
   return (
