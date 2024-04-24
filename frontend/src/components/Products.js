@@ -7,6 +7,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 
 import Grid from '@mui/material/Grid';
+import { TextField, Button, Container } from '@mui/material';
 import Paper from '@mui/material/Paper';
 import AuthContext from '../AuthContext';
 import ProductRow from './ProductRow';
@@ -18,14 +19,17 @@ export default function Products(){
 	const { sessionToken } = useContext(AuthContext);
 	const apiUrl = process.env.REACT_APP_API_URL;
 	const [products, setProducts] = useState([]);
+	let [searchKeyword, setSearchKeyword] = useState("");
 
 	const updateProductList =()=>{
-		fetch(apiUrl+'api/products/',{
-    		method: 'GET', 
+		fetch(apiUrl+'api/products/searchProducts',{
+    		method: 'POST', 
     		headers: {
+    		'Content-Type': 'application/json',
     		'Authorization': `Token ${sessionToken}`
-    		}
-    	})
+  			},
+  			body: JSON.stringify({"keyword": searchKeyword}),
+		})
       		.then(response => response.json())
       		.then(data => setProducts(data))
       		.catch(error => console.error('Error fetching products:', error));
@@ -35,10 +39,15 @@ export default function Products(){
     	updateProductList();
   	},[]);
 
+  	useEffect(() => {
+    	updateProductList();
+  	}, [searchKeyword]);
+
  	return (
  		<Grid item xs={12}>
     		<Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
 	    	<Title>Products</Title>
+	    	
 	        <Table size="small">
 	        	<TableHead>
 	          		<TableRow>
@@ -46,7 +55,12 @@ export default function Products(){
 		            	<TableCell><strong>Product Name</strong></TableCell>
 		            	<TableCell><strong>Description</strong></TableCell>
 		            	<TableCell><strong>Price</strong></TableCell>
-		            	<TableCell/>
+		            	<TableCell>
+		            		<TextField
+		            			label="Search"
+		            			value={searchKeyword}
+          						onChange={e => setSearchKeyword(e.target.value)}/>
+          					</TableCell>
 	          		</TableRow>
 	        </TableHead>
 	        <TableBody>

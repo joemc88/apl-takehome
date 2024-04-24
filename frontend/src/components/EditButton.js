@@ -28,8 +28,8 @@ export default function EditButton({id, name, description, price, updateListCall
   			headers: {
     		'Content-Type': 'application/json',
     		'Authorization': `Token ${sessionToken}`
-  		},
-  		body: JSON.stringify(updateProductData),
+  			},
+  			body: JSON.stringify(updateProductData),
 		})
   		.then(response => response.json())
   		.then(data => {
